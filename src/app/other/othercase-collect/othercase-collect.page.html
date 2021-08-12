@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-
-<ion-content>
-  <ion-searchbar (ionChange)="onChangeKeyword($event)"></ion-searchbar>
-  <ion-list>
+<ion-content forceOverscroll>
+<ion-list>
     <!-- <a [routerlink]="[/detail]"> -->
       <ion-item *ngFor="let case of filteredCases" (click)="showdetail(case)">
         <ion-avatar>
@@ -18,5 +15,5 @@
         </ion-label>
       </ion-item>
     <!-- </a> -->
-  </ion-list>
+</ion-list>
 </ion-content>

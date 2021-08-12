@@ -1,7 +1,7 @@
 import { NavController } from '@ionic/angular';
 import { OthercaseService } from './../../service/othercase.service';
 import { Case } from '../../models/case.model';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-othercase-collect',
@@ -10,6 +10,11 @@ import { Component, OnInit} from '@angular/core';
 })
 
 export class OthercaseCollectPage implements OnInit {
+
+  @Input() 
+  set keyword(keyword: string) {
+    this.onChangeKeyword(keyword);
+  }
 
   cases: Case[] = [];
   filteredCases: Case[] = [];
@@ -28,8 +33,7 @@ export class OthercaseCollectPage implements OnInit {
     this.navCtrl.navigateForward('othercase-collect/collect-detail/' + selectedCase.id)
   }
 
-  onChangeKeyword(event: any) {
-    let keyword = event.target.value.trim();
+  onChangeKeyword(keyword: string) {    
     console.log(keyword);
     if (keyword !== '') {
       this.filteredCases = [];

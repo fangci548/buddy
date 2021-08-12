@@ -1,22 +1,19 @@
-<!DOCTYPE html>
 
+<ion-segment [(ngModel)]="mode" >
+  <ion-segment-button value="collect" style="border-right: solid #CCCCBF">
+    <ion-label>收藏</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="running">
+    <ion-label>執行中</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="done" style="border-left: solid #CCCCBF">
+    <ion-label>已完成</ion-label>
+  </ion-segment-button>
+</ion-segment>
 
-<ion-content scroll="false">
-  <!--(ionChange) = " segmentChanged ($event)"-->
-  <ion-segment [(ngModel)]="mode" >
-    <ion-segment-button value="collect" style="border-right: solid #CCCCBF">
-      <ion-label>收藏</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="running">
-      <ion-label>執行中</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="done" style="border-left: solid #CCCCBF">
-      <ion-label>已完成</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-
-  <app-othercase-collect *ngIf="mode == 'collect'"></app-othercase-collect>
-  <app-othercase-running *ngIf="mode == 'running'"></app-othercase-running>
-  <app-othercase-done *ngIf="mode == 'done'"></app-othercase-done>
-
+<ion-searchbar (ionChange)="onChangeKeyword($event)"></ion-searchbar>
+<ion-content>
+<app-othercase-collect *ngIf="mode == 'collect'" [keyword]="searchKeyword"></app-othercase-collect>
+<app-othercase-running *ngIf="mode == 'running'"></app-othercase-running>
+<app-othercase-done *ngIf="mode == 'done'"></app-othercase-done>
 </ion-content>
