@@ -6,7 +6,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+
+    "build": "node patch.js && ng build",
+    "build-prod": "node patch.js && ng build --configuration=production",
+    "build-staging": "node patch.js && ng build --configuration=staging",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -71,6 +74,16 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "typescript": "~4.2.4"
+  },
+  "browser": {
+    "http": false,
+    "https":false,
+    "net": false,
+    "path": false,
+    "stream": false,
+    "tls": false,
+    "crypto": false,
+    "os": false
   },
   "description": "An Ionic project",
   "cordova": {
